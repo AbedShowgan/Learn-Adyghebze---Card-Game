@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     Integer[] redImages = {101, 102, 103, 201, 202, 203};
     Integer[] blueWords = { 301, 302, 303, 401, 402, 403};
 
-    int image11, image12, image13, image14, image21, image22, image23, image31, image32, image33, image41, image42, image43;
+    int image11, image12, image13, image21, image22, image23, image31, image32, image33, image41, image42, image43;
+    ArrayList<Integer> images;
     int firstCard, secondCard;
     int clickedFirst, clickedSecond;
     int cardNum = 1;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     int playerPoints = 0;
     ArrayList<ImageView> imArr;
     HashMap<Integer, Integer> combos = new HashMap<Integer, Integer>();
+
+    HashMap<Integer, Card> drawbleToCard = new HashMap<Integer, Card>();
   //  int cpuPoints = 0;
 
     @Override
@@ -57,6 +60,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Assign Fields
         tv_Score = (TextView) findViewById(R.id.tv_Score);
+        images = new ArrayList<>();
+
+        images.add(image11);
+        images.add(image12);
+        images.add(image13);
+
+
+        images.add(image21);
+        images.add(image22);
+        images.add(image23);
+
+        images.add(image31);
+        images.add(image32);
+        images.add(image33);
+
+        images.add(image41);
+        images.add(image42);
+        images.add(image43);
         tv_Hello = (TextView) findViewById(R.id.tv_Hello);
         iv11 = (ImageView) findViewById(R.id.iv_11);
         iv12 = (ImageView) findViewById(R.id.iv_12);
@@ -91,33 +112,36 @@ public class MainActivity extends AppCompatActivity {
         imArr.add(iv41);
         imArr.add(iv42);
         imArr.add(iv43);
+        //set Cards
+        setCards();
+        //set red,blue cardBacks;
+        flipOnFrontAll();
         //set tags to images
         setTags();
         //set card Images
         setImages();
         //set hashMap
         setMap();
-        //set Cards
-          setCards();
+
 
         //Collections.shuffle(Arrays.asList(cards));
+
         Collections.shuffle(Arrays.asList(blueWords));
         Collections.shuffle(Arrays.asList(redImages));
         tv_Hello.setBackgroundColor(Color.WHITE);
 
 
          exit= (Button) findViewById(R.id.exit);
-//        exit.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//                System.exit(0);
-//            }
-//        });
-
-
         //problem with button, this is the exit button function
         sol= (Button) findViewById(R.id.solution);
+
+        sol.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                showAll();
+               // Toast.makeText(MainActivity.this, "This article is about Buttons in Android!", Toast.LENGTH_SHORT).show();
+            }
+        });
         exit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -196,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 String tag = (String) view.getTag();
           //      System.out.println("STR Tag is: " + tag);
                 if (tag != null) {
+                    //which card in image view from 0-11 (positions)
                     int theCard = Integer.parseInt(tag);
                     doStuff(iv23, theCard);
                 }
@@ -273,12 +298,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
-
-
-
     //function that DOESSTUFF when u click on card.
     //@param: ImageView: iv11-iv43
     //@param: card: int, 0-11
@@ -344,15 +364,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
         catch(Exception e){
             System.out.println(" MESSAGE:            " + e.getMessage());;
         }
 
-
 //RECHECK THIS AREA //////////////////////////////////
-        /////////////////////////////////////////////
-
         //Check image selected and save in tmp
         if (cardNum == 1 && cards[card] < 300) {
           //  firstCard = cards[card];
@@ -512,11 +528,64 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculate() {
        // if (cardNum == 2) {
-            int firstDrawable = getImageResource(clickedFirst);
-            int secondDrawable = getImageResource(clickedSecond);
+            int firstDrawable = getImageResource2(clickedFirst);
+            int secondDrawable = getImageResource2(clickedSecond);
 
-            if (isMatch(firstDrawable, secondDrawable)) {
+            if (isMatch2(firstDrawable, secondDrawable)) {
                 // The drawables match, so you can perform your logic here (e.g., increase points, hide cards).
+                            if (clickedFirst == 0) {
+                iv11.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 1) {
+                iv12.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 2) {
+                iv13.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 3) {
+                iv21.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 4) {
+                iv22.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 5) {
+                iv23.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 6) {
+                iv31.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 7) {
+                iv32.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 8) {
+                iv33.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 9) {
+                iv41.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 10) {
+                iv42.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 11) {
+                iv43.setVisibility(View.INVISIBLE);
+            }
+
+            if (clickedSecond == 0) {
+                iv11.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 1) {
+                iv12.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 2) {
+                iv13.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 3) {
+                iv21.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 4) {
+                iv22.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 5) {
+                iv23.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 6) {
+                iv31.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 7) {
+                iv32.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 8) {
+                iv33.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 9) {
+                iv41.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 10) {
+                iv42.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond == 11) {
+                iv43.setVisibility(View.INVISIBLE);
+
+            }
+
                 playerPoints++;
                 tv_Score.setText("Score: " + playerPoints);
                 System.out.println("player points in calc hit");
@@ -584,7 +653,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+private void showAll(){
+        for(int i = 0; i < imArr.size();i++){
+            imArr.get(i).setImageResource(images.get(i));
+        }
+}
 
 
         //Function to set Images
@@ -617,26 +690,30 @@ public class MainActivity extends AppCompatActivity {
             image42 = R.drawable.chicken_word;
             image43 = R.drawable.dog_word;
 
-            iv11.setImageResource(R.drawable.red);
-            iv12.setImageResource(R.drawable.red);
-            iv13.setImageResource(R.drawable.red);
-
-            iv21.setImageResource(R.drawable.red);
-            iv22.setImageResource(R.drawable.red);
-            iv23.setImageResource(R.drawable.red);
-
-
-            //WORDS
-            iv31.setImageResource(R.drawable.blue);
-            iv32.setImageResource(R.drawable.blue);
-            iv33.setImageResource(R.drawable.blue);
-
-
-            iv41.setImageResource(R.drawable.blue);
-            iv42.setImageResource(R.drawable.blue);
-            iv43.setImageResource(R.drawable.blue);
     }
 
+
+    private void flipOnFrontAll(){
+        //Images
+        iv11.setImageResource(R.drawable.red);
+        iv12.setImageResource(R.drawable.red);
+        iv13.setImageResource(R.drawable.red);
+
+        iv21.setImageResource(R.drawable.red);
+        iv22.setImageResource(R.drawable.red);
+        iv23.setImageResource(R.drawable.red);
+
+
+        //WORDS
+        iv31.setImageResource(R.drawable.blue);
+        iv32.setImageResource(R.drawable.blue);
+        iv33.setImageResource(R.drawable.blue);
+
+
+        iv41.setImageResource(R.drawable.blue);
+        iv42.setImageResource(R.drawable.blue);
+        iv43.setImageResource(R.drawable.blue);
+    }
     //Function to set Tags
     private void setTags(){
 
@@ -668,27 +745,46 @@ public class MainActivity extends AppCompatActivity {
         combos.put(R.drawable.chicken1,R.drawable.chicken_word);
         combos.put(R.drawable.dog,R.drawable.dog_word);
 
+
+        combos.put(R.drawable.bear,R.drawable.bear_word);
+        combos.put(R.drawable.beaver1,R.drawable.beaver_word);
+        combos.put(R.drawable.bee,R.drawable.bee_card);
+        combos.put(R.drawable.cat,R.drawable.cat_word);
+        combos.put(R.drawable.chicken1,R.drawable.chicken_word);
+        combos.put(R.drawable.dog,R.drawable.dog_word);
     }
 
     //hash function is modulo 10
     private void setCards(){
-        classCards.add(new Card(R.drawable.bear,1));
-        classCards.add(new Card(R.drawable.bear_word,11));
+        Card bear = new Card(R.drawable.bear,1,R.drawable.bear_word);
+        Card bearWord = new Card(R.drawable.bear_word,11,R.drawable.bear);
+        classCards.add(bear);
+        classCards.add(bearWord);
 
-        classCards.add(new Card(R.drawable.beaver1,2));
-        classCards.add(new Card(R.drawable.beaver_word,12));
+        Card beaver = new Card(R.drawable.beaver1,2,R.drawable.beaver_word);
+        Card beaverWord = new Card(R.drawable.beaver_word,12,R.drawable.beaver1);
+        classCards.add(beaver);
+        classCards.add(beaverWord);
 
-        classCards.add(new Card(R.drawable.bee,3));
-        classCards.add(new Card(R.drawable.bee_card,13));
+        Card bee = new Card(R.drawable.bee,3,R.drawable.bee_card);
+        Card beeWord = new Card(R.drawable.bee_card,13,R.drawable.bee);
+        classCards.add(bee);
+        classCards.add(beeWord);
 
-        classCards.add(new Card(R.drawable.cat,4));
-        classCards.add(new Card(R.drawable.cat_word,14));
+        Card cat = new Card(R.drawable.cat,4,R.drawable.cat_word);
+        Card catWord = new Card(R.drawable.cat_word,14,R.drawable.cat);
+        classCards.add(cat);
+        classCards.add(catWord);
 
-        classCards.add(new Card(R.drawable.chicken1,5));
-        classCards.add(new Card(R.drawable.chicken_word,15));
+        Card chicken = new Card(R.drawable.chicken1,5,R.drawable.chicken_word);
+        Card chickenWord = new Card(R.drawable.chicken_word,15,R.drawable.chicken1);
+        classCards.add(chicken);
+        classCards.add(chickenWord);
 
-        classCards.add(new Card(R.drawable.dog,6));
-        classCards.add(new Card(R.drawable.dog_word,16));
+        Card dog = new Card(R.drawable.dog,6,R.drawable.dog_word);
+        Card dogWord = new Card(R.drawable.dog_word,16,R.drawable.dog);
+        classCards.add(dog);
+        classCards.add(dogWord);
     }
     //function to check if correct match
 //    private boolean isMatch(int imageImage, int wordImage){
@@ -713,51 +809,103 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     private boolean isMatch(int drawable, int wordDrawable) {
-        Integer word = combos.get(drawable);
-        return word != null && word == wordDrawable;
+       // Integer word = combos.get(drawable);
+        Card imageCard = new Card(0,0,1);
+        Card wordCard = new Card(1,1,0);
+        boolean found = false;
+        boolean found2 = false;
+        for(int i = 0; i < classCards.size();i++){
+            if(found && found2){
+                break;
+            }
+            if(classCards.get(i).getDrawableResourceId() ==drawable){
+                imageCard = classCards.get(i);
+                found  =true;
+            }
+            if(classCards.get(i).getDrawableResourceId() ==wordDrawable){
+                wordCard = classCards.get(i);
+                found2  =true;
+            }
+
+        }
+        //check condition
+
+            System.out.println("Word ID : " + wordCard.getID());
+            System.out.println("Image ID : " + imageCard.getID());
+
+        System.out.println("Word wordDrawbleID : " + wordCard.getDrawableResourceId());
+        System.out.println("Image drawbleID : " + imageCard.getDrawableResourceId());
+            return imageCard.comparePartnerID(wordCard);
+
+        //return word != null && word == wordDrawable;
+    }
+
+    private boolean isMatch2(int drawable, int wordDrawable) {
+  return wordDrawable-200 == drawable;
     }
 
     private int getImageResource(int clickedFirst){
         if(clickedFirst  == 0){
             return image11;
+           // return redImages[clickedFirst];
         }
         else if(clickedFirst==1){
             return image12;
+            //return redImages[clickedFirst];
         }
         else if(clickedFirst==2){
             return image13;
+            //return redImages[clickedFirst];
         }
 
         else if(clickedFirst==3){
             return image21;
+           // return redImages[clickedFirst];
         }
         else if(clickedFirst==4){
             return image22;
+          //  return redImages[clickedFirst];
         }
         else if(clickedFirst==5){
             return image23;
+           // return redImages[clickedFirst];
         }
         else if(clickedFirst==6){
-            return image31;
+           return image31;
+            //return blueWords[clickedFirst-6];
         }
         else if(clickedFirst==7){
             return image32;
+            //return blueWords[clickedFirst-6];
         }
         else if(clickedFirst==8){
             return image33;
+           // return blueWords[clickedFirst-6];
         }
         else if(clickedFirst==9){
             return image41;
+            //return blueWords[clickedFirst-6];
         }
         else if(clickedFirst==10){
             return image42;
+            //return blueWords[clickedFirst-6];
         }
         else if(clickedFirst==11){
             return image43;
+           // return blueWords[clickedFirst-6];
         }
 
 
         return 0;
+    }
+
+    private int getImageResource2(int clickedFirst) {
+        if (clickedFirst < 6) {
+
+
+            return redImages[clickedFirst];
+        }
+        return blueWords[clickedSecond-6];
     }
 
     private void enableAllCards(boolean enabled) {
