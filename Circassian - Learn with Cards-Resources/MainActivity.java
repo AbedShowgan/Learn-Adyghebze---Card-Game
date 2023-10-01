@@ -653,10 +653,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Shows image behind card
 private void showAll(){
-        for(int i = 0; i < imArr.size();i++){
-            imArr.get(i).setImageResource(images.get(i));
-        }
+//        for(int i = 0; i < imArr.size();i++){
+//            imArr.get(i).setImageResource(images.get(i));
+//        }
+
+    //if card less than 300, we set images of regular animals
+
+            iv11.setImageResource(image11);
+            iv12.setImageResource(image12);
 }
 
 
