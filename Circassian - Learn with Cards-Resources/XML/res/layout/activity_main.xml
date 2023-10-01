@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <include
+        layout="@layout/images"
+        android:layout_width="wrap_content"
+        android:layout_height="360dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="120dp" />
+
+    <TextView
+        android:id="@+id/tv_Hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello "
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="56dp"
+        android:layout_marginBottom="48dp"
+        android:text="Exit" />
+
+    <Button
+        android:id="@+id/solution"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="57dp"
+        android:layout_marginBottom="49dp"
+        android:text="Solution" />
+
+    <TextView
+        android:id="@+id/tv_Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="59dp"
+        android:text="Score: "
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
+<!--//</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+<!--<androidx.constraintlayout.widget.Layou xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--tools:context=".MainActivity">-->
+
+<!--</androidx.constraintlayout.widget.Layou>-->
