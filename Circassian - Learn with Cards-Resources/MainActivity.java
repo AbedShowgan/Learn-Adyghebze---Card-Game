@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     //var to synchronize turns , 0 for images and 1 for words
     static int lastTurn = 0;
+    static int startClickCount = 0;
 
     TextView tv_Score;
     TextView tv_Hello;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     HashMap<Integer, Integer> combos = new HashMap<Integer, Integer>();
 
     HashMap<Integer, Card> drawbleToCard = new HashMap<Integer, Card>();
+
+    HashMap<Integer, Integer> intToCard = new HashMap<Integer, Integer>();
   //  int cpuPoints = 0;
 
     @Override
@@ -114,14 +117,16 @@ public class MainActivity extends AppCompatActivity {
         imArr.add(iv43);
         //set Cards
         setCards();
-        //set red,blue cardBacks;
-        flipOnFrontAll();
-        //set tags to images
-        setTags();
-        //set card Images
-        setImages();
-        //set hashMap
-        setMap();
+
+
+        /////REAL!!!!//////
+//        //set tags to images
+//        setTags();
+//        //set card Images
+//        setImages();
+//        //set hashMap
+//        setMap();
+        /////REAL!!!!//////
 
 
         //Collections.shuffle(Arrays.asList(cards));
@@ -129,16 +134,50 @@ public class MainActivity extends AppCompatActivity {
         Collections.shuffle(Arrays.asList(blueWords));
         Collections.shuffle(Arrays.asList(redImages));
         tv_Hello.setBackgroundColor(Color.WHITE);
+        //set red,blue cardBacks;
+        // flipOnFrontAll();
 
+
+
+
+  /////TESTT!!!!//////
+        //set tags to images
+        setTags();
+        //set card Images
+        setImages();
+        //set hashMap
+        setMap();
+        //set map of ints to cards: Example- 101 --> image11
+        setIntToCard();
+        /////TESTT!!!!//////
+
+        showAll2();
 
          exit= (Button) findViewById(R.id.exit);
         //problem with button, this is the exit button function
         sol= (Button) findViewById(R.id.solution);
-
+        sol.setText("Start");
         sol.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                showAll();
+            //    showAll();
+                if(startClickCount == 0){
+                    flipOnFrontAll();
+                    startClickCount++;
+                    sol.setText("Solution");
+                }
+                else if(startClickCount == 1){
+                    startClickCount++;
+                    showAll();
+                    sol.setText("Play Again");
+                    //finish();
+                //    checkFinished();
+                  //  restart();
+                }
+                else if(startClickCount == 2){
+
+                    restart();
+                }
                // Toast.makeText(MainActivity.this, "This article is about Buttons in Android!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -652,6 +691,30 @@ public class MainActivity extends AppCompatActivity {
     }
     }
 
+    private void restart(){
+
+
+            System.out.println("GAME IS FINISHED!!!!!!! \n");
+            //AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+            //alertDialogBuilder.setMessage("Congratulations!. Score: " + playerPoints).setCancelable(false).setPositiveButton("NEW", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+            startClickCount = 0;
+                   // sol.setText("Play Again");
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+               // }
+//            }).setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    finish();
+//                }
+//            });
+            //AlertDialog alertDialog = alertDialogBuilder.create();
+          //  alertDialog.show();
+    }
+
 
     //Shows image behind card
 private void showAll(){
@@ -663,7 +726,34 @@ private void showAll(){
 
             iv11.setImageResource(image11);
             iv12.setImageResource(image12);
+            iv13.setImageResource(image13);
+
+    iv21.setImageResource(image21);
+    iv22.setImageResource(image22);
+    iv23.setImageResource(image23);
+
+    iv31.setImageResource(image31);
+    iv32.setImageResource(image32);
+    iv33.setImageResource(image33);
+
+    iv41.setImageResource(image41);
+    iv42.setImageResource(image42);
+    iv43.setImageResource(image43);
 }
+
+
+
+    //Shows image behind card
+    private void showAll2(){
+        for(int i = 0; i < imArr.size();i++){
+            if(i < 6){
+                imArr.get(i).setImageResource(intToCard.get(redImages[i]));
+            }
+            else if(i >= 6){
+                imArr.get(i).setImageResource(intToCard.get(blueWords[i-6]));
+            }
+        }
+    }
 
 
         //Function to set Images
@@ -758,9 +848,30 @@ private void showAll(){
         combos.put(R.drawable.cat,R.drawable.cat_word);
         combos.put(R.drawable.chicken1,R.drawable.chicken_word);
         combos.put(R.drawable.dog,R.drawable.dog_word);
+
+
+
     }
 
-    //hash function is modulo 10
+        private void setIntToCard(){
+            intToCard.put(101,image11);
+            intToCard.put(102,image12);
+            intToCard.put(103,image13);
+
+            intToCard.put(201,image21);
+            intToCard.put(202,image22);
+            intToCard.put(203,image23);
+
+            intToCard.put(301,image31);
+            intToCard.put(302,image32);
+            intToCard.put(303,image33);
+
+            intToCard.put(401,image41);
+            intToCard.put(402,image42);
+            intToCard.put(403,image43);
+        }
+
+    //Function that adds cards and number pairs to hashMap
     private void setCards(){
         Card bear = new Card(R.drawable.bear,1,R.drawable.bear_word);
         Card bearWord = new Card(R.drawable.bear_word,11,R.drawable.bear);
@@ -904,6 +1015,11 @@ private void showAll(){
 
         return 0;
     }
+
+
+    private int getImageFromInt(int ID){
+        return intToCard.get(ID);
+        }
 
     private int getImageResource2(int clickedFirst) {
         if (clickedFirst < 6) {
