@@ -17,6 +17,8 @@ public class MenuActivity extends AppCompatActivity {
             setContentView(R.layout.activity_menu);
 
             Button btnPlay = findViewById(R.id.btnPlay);
+            Button btnDictionary = findViewById(R.id.btnDictionary);
+            Button btnSettings = findViewById(R.id.btnSettings);
             Button btnExit = findViewById(R.id.btnExit);
 
             btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +30,23 @@ public class MenuActivity extends AppCompatActivity {
                 }
             });
 
+            btnDictionary.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Start the main game activity
+                    Intent intent = new Intent(MenuActivity.this, DictionaryView.class);
+                    startActivity(intent);
+                }
+            });
+
+            btnSettings.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Exit the app when the "Exit" button is clicked
+                    Intent intent = new Intent(MenuActivity.this, settingsActivity.class);
+                    startActivity(intent);
+                }
+            });
             btnExit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

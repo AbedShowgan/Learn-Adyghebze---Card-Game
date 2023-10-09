@@ -903,27 +903,6 @@ private void showAll(){
         classCards.add(dog);
         classCards.add(dogWord);
     }
-    //function to check if correct match
-//    private boolean isMatch(int imageImage, int wordImage){
-//        if(imageImage==0){
-//            System.out.println("image int null");
-//        }
-//        if(wordImage==0){
-//            System.out.println("word int null");
-//        }
-//
-//        System.out.println("Image in ISMATCH IS: " + imageImage + "word is: " + wordImage);
-//        Integer word = combos.get(imageImage);
-//        System.out.println("Integer WORD from hash  IS: " + word + "word is: " + wordImage);
-//        if(word!=null){
-//            if(wordImage == word ){
-//                return true;
-//            }
-//        }
-//        System.out.println("Word is null");
-//
-//        return false;
-//    }
 
     private boolean isMatch(int drawable, int wordDrawable) {
        // Integer word = combos.get(drawable);
@@ -946,15 +925,12 @@ private void showAll(){
 
         }
         //check condition
-
             System.out.println("Word ID : " + wordCard.getID());
             System.out.println("Image ID : " + imageCard.getID());
 
         System.out.println("Word wordDrawbleID : " + wordCard.getDrawableResourceId());
         System.out.println("Image drawbleID : " + imageCard.getDrawableResourceId());
-            return imageCard.comparePartnerID(wordCard);
-
-        //return word != null && word == wordDrawable;
+        return imageCard.comparePartnerID(wordCard);
     }
 
     private boolean isMatch2(int drawable, int wordDrawable) {
