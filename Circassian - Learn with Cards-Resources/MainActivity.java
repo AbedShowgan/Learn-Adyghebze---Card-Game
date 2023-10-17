@@ -150,8 +150,7 @@ public class MainActivity extends AppCompatActivity {
         //set map of ints to cards: Example- 101 --> image11
         setIntToCard();
         /////TESTT!!!!//////
-
-        showAll2();
+        showAll();
 
          exit= (Button) findViewById(R.id.exit);
         //problem with button, this is the exit button function
@@ -567,10 +566,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculate() {
        // if (cardNum == 2) {
-            int firstDrawable = getImageResource2(clickedFirst);
-            int secondDrawable = getImageResource2(clickedSecond);
+            int firstDrawable = getImageResource(clickedFirst);
+            int secondDrawable = getImageResource(clickedSecond);
 
-            if (isMatch2(firstDrawable, secondDrawable)) {
+            if (isMatch(firstDrawable, secondDrawable)) {
                 // The drawables match, so you can perform your logic here (e.g., increase points, hide cards).
                             if (clickedFirst == 0) {
                 iv11.setVisibility(View.INVISIBLE);
@@ -691,60 +690,40 @@ public class MainActivity extends AppCompatActivity {
     }
     }
 
+
+    //Restarts Game, start new activity
     private void restart(){
-
-
             System.out.println("GAME IS FINISHED!!!!!!! \n");
-            //AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-            //alertDialogBuilder.setMessage("Congratulations!. Score: " + playerPoints).setCancelable(false).setPositiveButton("NEW", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
             startClickCount = 0;
-                   // sol.setText("Play Again");
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
-               // }
-//            }).setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    finish();
-//                }
-//            });
-            //AlertDialog alertDialog = alertDialogBuilder.create();
-          //  alertDialog.show();
     }
 
 
     //Shows image behind card
-private void showAll(){
-//        for(int i = 0; i < imArr.size();i++){
-//            imArr.get(i).setImageResource(images.get(i));
-//        }
-
-    //if card less than 300, we set images of regular animals
-
-            iv11.setImageResource(image11);
-            iv12.setImageResource(image12);
-            iv13.setImageResource(image13);
-
-    iv21.setImageResource(image21);
-    iv22.setImageResource(image22);
-    iv23.setImageResource(image23);
-
-    iv31.setImageResource(image31);
-    iv32.setImageResource(image32);
-    iv33.setImageResource(image33);
-
-    iv41.setImageResource(image41);
-    iv42.setImageResource(image42);
-    iv43.setImageResource(image43);
-}
-
-
+//private void showAll(){
+//    //if card less than 300, we set images of regular animals
+//
+//            iv11.setImageResource(image11);
+//            iv12.setImageResource(image12);
+//            iv13.setImageResource(image13);
+//
+//    iv21.setImageResource(image21);
+//    iv22.setImageResource(image22);
+//    iv23.setImageResource(image23);
+//
+//    iv31.setImageResource(image31);
+//    iv32.setImageResource(image32);
+//    iv33.setImageResource(image33);
+//
+//    iv41.setImageResource(image41);
+//    iv42.setImageResource(image42);
+//    iv43.setImageResource(image43);
+//}
 
     //Shows image behind card
-    private void showAll2(){
+    private void showAll(){
         for(int i = 0; i < imArr.size();i++){
             if(i < 6){
                 imArr.get(i).setImageResource(intToCard.get(redImages[i]));
@@ -799,12 +778,10 @@ private void showAll(){
         iv22.setImageResource(R.drawable.red);
         iv23.setImageResource(R.drawable.red);
 
-
         //WORDS
         iv31.setImageResource(R.drawable.blue);
         iv32.setImageResource(R.drawable.blue);
         iv33.setImageResource(R.drawable.blue);
-
 
         iv41.setImageResource(R.drawable.blue);
         iv42.setImageResource(R.drawable.blue);
@@ -840,7 +817,6 @@ private void showAll(){
         combos.put(R.drawable.cat,R.drawable.cat_word);
         combos.put(R.drawable.chicken1,R.drawable.chicken_word);
         combos.put(R.drawable.dog,R.drawable.dog_word);
-
 
         combos.put(R.drawable.bear,R.drawable.bear_word);
         combos.put(R.drawable.beaver1,R.drawable.beaver_word);
@@ -904,100 +880,98 @@ private void showAll(){
         classCards.add(dogWord);
     }
 
+//    private boolean isMatch(int drawable, int wordDrawable) {
+//       // Integer word = combos.get(drawable);
+//        Card imageCard = new Card(0,0,1);
+//        Card wordCard = new Card(1,1,0);
+//        boolean found = false;
+//        boolean found2 = false;
+//        for(int i = 0; i < classCards.size();i++){
+//            if(found && found2){
+//                break;
+//            }
+//            if(classCards.get(i).getDrawableResourceId() ==drawable){
+//                imageCard = classCards.get(i);
+//                found  =true;
+//            }
+//            if(classCards.get(i).getDrawableResourceId() ==wordDrawable){
+//                wordCard = classCards.get(i);
+//                found2  =true;
+//            }
+//
+//        }
+//        //check condition
+//            System.out.println("Word ID : " + wordCard.getID());
+//            System.out.println("Image ID : " + imageCard.getID());
+//
+//        System.out.println("Word wordDrawbleID : " + wordCard.getDrawableResourceId());
+//        System.out.println("Image drawbleID : " + imageCard.getDrawableResourceId());
+//        return imageCard.comparePartnerID(wordCard);
+//    }
+
     private boolean isMatch(int drawable, int wordDrawable) {
-       // Integer word = combos.get(drawable);
-        Card imageCard = new Card(0,0,1);
-        Card wordCard = new Card(1,1,0);
-        boolean found = false;
-        boolean found2 = false;
-        for(int i = 0; i < classCards.size();i++){
-            if(found && found2){
-                break;
-            }
-            if(classCards.get(i).getDrawableResourceId() ==drawable){
-                imageCard = classCards.get(i);
-                found  =true;
-            }
-            if(classCards.get(i).getDrawableResourceId() ==wordDrawable){
-                wordCard = classCards.get(i);
-                found2  =true;
-            }
-
-        }
-        //check condition
-            System.out.println("Word ID : " + wordCard.getID());
-            System.out.println("Image ID : " + imageCard.getID());
-
-        System.out.println("Word wordDrawbleID : " + wordCard.getDrawableResourceId());
-        System.out.println("Image drawbleID : " + imageCard.getDrawableResourceId());
-        return imageCard.comparePartnerID(wordCard);
-    }
-
-    private boolean isMatch2(int drawable, int wordDrawable) {
   return wordDrawable-200 == drawable;
     }
 
-    private int getImageResource(int clickedFirst){
-        if(clickedFirst  == 0){
-            return image11;
-           // return redImages[clickedFirst];
-        }
-        else if(clickedFirst==1){
-            return image12;
-            //return redImages[clickedFirst];
-        }
-        else if(clickedFirst==2){
-            return image13;
-            //return redImages[clickedFirst];
-        }
-
-        else if(clickedFirst==3){
-            return image21;
-           // return redImages[clickedFirst];
-        }
-        else if(clickedFirst==4){
-            return image22;
-          //  return redImages[clickedFirst];
-        }
-        else if(clickedFirst==5){
-            return image23;
-           // return redImages[clickedFirst];
-        }
-        else if(clickedFirst==6){
-           return image31;
-            //return blueWords[clickedFirst-6];
-        }
-        else if(clickedFirst==7){
-            return image32;
-            //return blueWords[clickedFirst-6];
-        }
-        else if(clickedFirst==8){
-            return image33;
-           // return blueWords[clickedFirst-6];
-        }
-        else if(clickedFirst==9){
-            return image41;
-            //return blueWords[clickedFirst-6];
-        }
-        else if(clickedFirst==10){
-            return image42;
-            //return blueWords[clickedFirst-6];
-        }
-        else if(clickedFirst==11){
-            return image43;
-           // return blueWords[clickedFirst-6];
-        }
-
-
-        return 0;
-    }
+//    private int getImageResource(int clickedFirst){
+//        if(clickedFirst  == 0){
+//            return image11;
+//           // return redImages[clickedFirst];
+//        }
+//        else if(clickedFirst==1){
+//            return image12;
+//            //return redImages[clickedFirst];
+//        }
+//        else if(clickedFirst==2){
+//            return image13;
+//            //return redImages[clickedFirst];
+//        }
+//
+//        else if(clickedFirst==3){
+//            return image21;
+//           // return redImages[clickedFirst];
+//        }
+//        else if(clickedFirst==4){
+//            return image22;
+//          //  return redImages[clickedFirst];
+//        }
+//        else if(clickedFirst==5){
+//            return image23;
+//           // return redImages[clickedFirst];
+//        }
+//        else if(clickedFirst==6){
+//           return image31;
+//            //return blueWords[clickedFirst-6];
+//        }
+//        else if(clickedFirst==7){
+//            return image32;
+//            //return blueWords[clickedFirst-6];
+//        }
+//        else if(clickedFirst==8){
+//            return image33;
+//           // return blueWords[clickedFirst-6];
+//        }
+//        else if(clickedFirst==9){
+//            return image41;
+//            //return blueWords[clickedFirst-6];
+//        }
+//        else if(clickedFirst==10){
+//            return image42;
+//            //return blueWords[clickedFirst-6];
+//        }
+//        else if(clickedFirst==11){
+//            return image43;
+//           // return blueWords[clickedFirst-6];
+//        }
+//        return 0;
+//    }
 
 
     private int getImageFromInt(int ID){
         return intToCard.get(ID);
         }
 
-    private int getImageResource2(int clickedFirst) {
+    private int getImageResource(int clickedFirst) {
         if (clickedFirst < 6) {
 
 

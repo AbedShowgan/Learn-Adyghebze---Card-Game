@@ -19,7 +19,7 @@ public class MenuActivity extends AppCompatActivity {
             Button btnPlay = findViewById(R.id.btnPlay);
             Button btnDictionary = findViewById(R.id.btnDictionary);
             Button btnSettings = findViewById(R.id.btnSettings);
-            Button btnExit = findViewById(R.id.btnExit);
+            Button btnExit = findViewById(R.id.btnExitFromApp);
 
             btnPlay.setOnClickListener(new View.OnClickListener() {
                 @Override

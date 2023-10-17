@@ -21,5 +21,12 @@ public class listData {
     public listData(String word, String translation) {
         this.word = word;
         this.translation = translation;
+
+    }
+//Constructor that takes image
+    public listData(int image,String word, String translation) {
+        this.word = word;
+        this.translation = translation;
+        this.image = image;
     }
 }
