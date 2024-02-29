@@ -14,16 +14,16 @@ If matched correctly, we score a point and the paired match disappears. <br>
 Else, they get flipped over again and we are granted more tries.<br>
 
 <u><h2><b>This is the HomePage</b></h2></u><br>
-<img src="image-3.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="240" height="380" /> <br>
+<img src="https://i.imgur.com/0YIKRNB.jpeg"  width="240" height="380" /> <br>
 
 <u><b>The app also features an accessible dictionary:</b></u> <br>
-<img src="image-4.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="240" height="380" /><br>
+<img src="https://i.imgur.com/w11fUPQ.jpeg"  width="240" height="380" /><br>
 <u><b>Before Starting: We are allowed to see the positions for each card and its match.</b></u> <br>
-<img src="image-1.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="240" height="380" /> </b><br>
+<img src="https://i.imgur.com/DVf1vaV.jpg"  width="240" height="380" /> </b><br>
 <u><b>Start of the game: We must match all words to all images, by pairs.</b></u> <br>
-<img src="image.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="240" height="380" /><br>
+<img src="https://i.imgur.com/gpYObpr.jpeg"  width="240" height="380" /><br>
 <u><b>Note: You can also see the soution, if you cannot solve it.</b> </u><br>
-<img src="image-2.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="240" height="380" /><br>
+<img src="https://i.imgur.com/VKUIoPd.jpeg"  width="240" height="380" /><br>
 
 
 Any questions regarding the app or feeback will be gladly accepted.
