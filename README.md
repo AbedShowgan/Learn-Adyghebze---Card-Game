@@ -1,9 +1,9 @@
 # Learn-Adyghebze---Card-Game
-<span style="color:red"><b>NOTE:</b> </span>The app is currently in-progress. <br>
+
 A fun way to learn Circassian Vocabulary using memory cards.<br>
-This personal project has been created in order to help preserve the Circassian Language (Adyghebze) which is on the trajectory to be extinct.<br>
-More and more people cease speaking it as their mother-tongue with the passage of time. <br>
-My goal is to halt and reverse that trend, such that our people (and hopefully others) learn the language and start using it again. 
+This Application has been created in order to help preserve the Circassian Language (Adyghebze) which is on the trajectory to be extinct.<br>
+Circassians since 21.5.1864 have been struggling to protect their language, and as a consequence many have forgotten it with the passage of time. <br>
+This app aims to help Circassians ( and others) learn the language in an enjoyavble way <br>
 Wikipedia Source for the Circassian language: https://en.wikipedia.org/wiki/Circassian_languages<br>
 <u>The game is a card game where you have 2 sets of card:</u> <br>
 <u>Red Cards: </u><br>
@@ -27,6 +27,6 @@ Else, they get flipped over again and we are granted more tries.<br>
 
 
 Any questions regarding the app or feeback will be gladly accepted.
-
+<span style="color:red"><b>NOTE:</b> </span>The app is currently in-progress. <br> </span>
 
 
